@@ -21,7 +21,7 @@ export default function HomePage() {
   return (
     <div className="bg-gradient-to-r from-[#5753ff] via-[#c7c5ff] to-[#5753ff] text-gray-900 min-h-screen">
       {/* Header */}
-      <header className="relative bg-[#FFEE54] p-4 flex justify-between items-center shadow-md rounded-b-[30px] border-b-4 border-[#D70654]">
+      <header className="relative bg-[#FFEE54] p-4 flex justify-between items-center shadow-md border-b-4 border-[#D70654]">
         <div className="flex items-center space-x-4">
           <Image src="/images/logo.png" alt="Brahmaputra Gurukul Logo" width={120} height={60} className="drop-shadow-lg" />
         </div>

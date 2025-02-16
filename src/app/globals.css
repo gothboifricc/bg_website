@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%); /* Start fully off-screen (right side) */
+    opacity: 0; /* Start completely invisible */
+  }
+  5% {
+    opacity: 1; /* Gradually appear at 5% of the animation */
+  }
+  100% {
+    transform: translateX(-100%); /* Move completely off-screen (left side) */
+  }
+}
+
+.animate-marquee {
+  display: inline-block; /* Keeps the text in a single horizontal line */
+  white-space: nowrap; /* Prevents text from wrapping: Ensures text doesn’t wrap to a new line */
+  animation: marquee 12s linear infinite; /* marquee → Uses the animation defined above. 12s → Total duration of one full cycle. cubic-bezier(0.25, 1, 0.5, 1) → Custom easing function that makes the animation smoother and more natural. infinite → Repeats forever. */
+}
+
+.text-neon-green {
+  color: #39ff14; /* Bright green text */
+  text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14; /* Creates a glowing neon effect */
+}
+
+
