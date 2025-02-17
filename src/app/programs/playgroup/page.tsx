@@ -94,7 +94,7 @@ export default function HomePage() {
       <section className="py-16 px-6 text-center max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-gray-900">About Playgroup</h2>
         <p className="text-gray-800 mt-4">
-          Our Playgroup program is designed for children aged <strong>1.5 - 2.5 years</strong>, focusing on interactive learning through
+          Our Playgroup program is designed for children aged <strong>2 - 3 years</strong>, focusing on interactive learning through
           <strong> play, music, and exploration</strong>.
         </p>
       </section>
