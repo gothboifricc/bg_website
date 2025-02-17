@@ -18,7 +18,7 @@
 .animate-marquee {
   display: inline-block; /* Keeps the text in a single horizontal line */
   white-space: nowrap; /* Prevents text from wrapping: Ensures text doesn’t wrap to a new line */
-  animation: marquee 12s linear infinite; /* marquee → Uses the animation defined above. 12s → Total duration of one full cycle. cubic-bezier(0.25, 1, 0.5, 1) → Custom easing function that makes the animation smoother and more natural. infinite → Repeats forever. */
+  animation: marquee 7s linear infinite; /* marquee → Uses the animation defined above. 12s → Total duration of one full cycle. cubic-bezier(0.25, 1, 0.5, 1) → Custom easing function that makes the animation smoother and more natural. infinite → Repeats forever. */
 }
 
 .text-neon-green {

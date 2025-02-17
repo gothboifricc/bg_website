@@ -10,18 +10,23 @@
 //   const router = useRouter();
 
 //   const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-//     e.preventDefault(); // Prevent default anchor behavior
+//     e.preventDefault();
 //     if (window.location.pathname === "/") {
-//       // If already on home page, just scroll
 //       document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 //     } else {
-//       // Navigate to home page and scroll after load
 //       router.push("/#contact");
 //     }
 //   };
 
 //   return (
 //     <div className="bg-gradient-to-r from-[#5753ff] via-[#c7c5ff] to-[#5753ff] text-gray-900 min-h-screen">
+//       {/* Notification Ticker */}
+//       <div className="w-full bg-black text-neon-green py-2 overflow-hidden">
+//         <div className="whitespace-nowrap animate-marquee text-lg font-bold uppercase">
+//           🔔 School Reopening Soon! &nbsp; | &nbsp; 🎓 Admissions Open for 2025! &nbsp; | &nbsp; 🏆 Annual Sports Meet Announced!
+//         </div>
+//       </div>
+
 //       {/* Header */}
 //       <header className="relative bg-[#FFEE54] p-4 flex justify-between items-center shadow-md border-b-4 border-[#D70654]">
 //         <div className="flex items-center space-x-4">
@@ -30,11 +35,7 @@
 
 //         {/* Desktop Nav */}
 //         <nav className="hidden md:flex space-x-6 font-medium">
-//           {[
-//             { name: "Home", href: "/" },
-//             { name: "Our Programs", href: "/programs/our-programs" },
-//             { name: "Contact", href: "#contact" }
-//           ].map((link, index) => (
+//           {[{ name: "Home", href: "/" }, { name: "Our Programs", href: "/programs/our-programs" }, { name: "Contact", href: "#contact" }].map((link, index) => (
 //             <Link
 //               key={index}
 //               href={link.href}
@@ -91,20 +92,34 @@
 //       </section>
 
 //       {/* About Section */}
-//       <section className="py-16 px-6 text-center max-w-4xl mx-auto">
+//       <section className="py-16 px-6 max-w-6xl mx-auto text-center">
 //         <h2 className="text-3xl font-bold text-gray-800">Our Mission & Vision</h2>
 //         <p className="mt-4 text-gray-700">
-//           At Brahmaputra Gurukul, we believe in holistic education that nurtures creativity, critical thinking, and emotional intelligence.
-//           Our goal is to create a safe and inspiring learning environment where children develop a love for learning that lasts a lifetime.
-//         </p>
+//           At <strong>Brahmaputra Gurukul</strong>, we want every child to dream big, explore more, and have tons of fun while learning! Our school is like a big happy family where curiosity is encouraged, questions are welcome, and mistakes are just part of the adventure. 🤩🎈
 
-//         {/* Cartoonish Button */}
+//           <br/><br/>We believe that learning isn’t just about books and exams—it’s about discovering new things, making friends, and growing into kind, smart, and confident humans. Whether it's solving puzzles, painting masterpieces, or running around in the playground, we make sure every child enjoys the journey of learning. 🎨📚🏃‍♂️
+
+//           <br/><br/>At Brahmaputra Gurukul, we’re not just teaching lessons; we’re building a future full of bright minds and happy hearts! 🌟❤️😊
+//         </p>
 //         <div className="mt-6">
 //           <Link href="/programs/our-programs">
 //             <button className="bg-[#FFD95F] text-gray-900 font-bold py-3 px-6 text-lg rounded-full border-4 border-[#D70654] shadow-lg hover:bg-[#FFEE54] transition-transform transform hover:scale-105">
 //               Explore Our Programs &gt;&gt;
 //             </button>
 //           </Link>
+//         </div>
+//       </section>
+
+//       {/* News and Notifications Section (Moved Below About Section) */}
+//       <section className="py-16 px-6 max-w-6xl mx-auto">
+//         <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#D70654]">
+//           <h3 className="text-2xl font-bold text-[#D70654] border-b-2 pb-2">News & Notifications</h3>
+//           <ul className="mt-4 space-y-2 text-gray-700">
+//             <li className="border-b pb-2">🔹 <a href="#" className="text-blue-600 hover:underline">Admission Open for 2025</a></li>
+//             <li className="border-b pb-2">🔹 <a href="#" className="text-blue-600 hover:underline">Upcoming Parent-Teacher Meeting</a></li>
+//             <li className="border-b pb-2">🔹 <a href="#" className="text-blue-600 hover:underline">Annual Sports Day Announced</a></li>
+//             <li>🔹 <a href="#" className="text-blue-600 hover:underline">New Learning Modules Introduced</a></li>
+//           </ul>
 //         </div>
 //       </section>
 
@@ -190,6 +205,7 @@
 //     </div>
 //   );
 // }
+
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
@@ -215,7 +231,7 @@ export default function HomePage() {
       {/* Notification Ticker */}
       <div className="w-full bg-black text-neon-green py-2 overflow-hidden">
         <div className="whitespace-nowrap animate-marquee text-lg font-bold uppercase">
-          🔔 School Reopening Soon! &nbsp; | &nbsp; 🎓 Admissions Open for 2025! &nbsp; | &nbsp; 🏆 Annual Sports Meet Announced!
+          🔔 School Reopening Soon! &nbsp; | &nbsp; 🎓 Admissions Open for 2025! &nbsp; | &nbsp; 🏆 New Competitions Coming Soon!
         </div>
       </div>
 
@@ -232,15 +248,20 @@ export default function HomePage() {
               key={index}
               href={link.href}
               onClick={link.name === "Contact" ? handleContactClick : undefined}
-              className="text-[#D70654] bg-[#FFFFFF] px-4 py-2 rounded-full border-4 border-[#D70654] shadow-lg hover:bg-[#e8ecff] transition-transform transform hover:scale-110"
+              className="relative group text-[#D70654] hover:text-white transition-colors duration-300"
             >
-              {link.name}
+              <span className="px-3 py-2 text-xl">{link.name}</span>
+              {/* Underline effect */}
+              <span className="absolute left-0 bottom-[-4px] w-full h-[2px] bg-[#D70654] scale-x-0 group-hover:scale-x-100 transform transition-all duration-300"></span>
             </Link>
           ))}
         </nav>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden bg-[#FFD95F] p-2 rounded-full border-4 border-[#D70654] shadow-lg" onClick={() => setMenuOpen(!menuOpen)}>
+        <button
+          className="md:hidden flex items-center justify-center bg-[#FFD95F] p-2 rounded-full border-4 border-[#D70654] shadow-md hover:bg-[#FFEE54] transform transition duration-300"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
           {menuOpen ? <X size={28} className="text-[#D70654]" /> : <Menu size={28} className="text-[#D70654]" />}
         </button>
 
@@ -251,11 +272,7 @@ export default function HomePage() {
           </button>
 
           <nav className="flex flex-col space-y-6 text-xl font-bold text-[#D70654]">
-            {[
-              { name: "Home", href: "/" },
-              { name: "Our Programs", href: "/programs/our-programs" },
-              { name: "Contact", href: "#contact" }
-            ].map((link, index) => (
+            {[{ name: "Home", href: "/" }, { name: "Our Programs", href: "/programs/our-programs" }, { name: "Contact", href: "#contact" }].map((link, index) => (
               <Link
                 key={index}
                 href={link.href}
@@ -265,9 +282,11 @@ export default function HomePage() {
                   }
                   setMenuOpen(false);
                 }}
-                className="px-6 py-3 bg-[#FFEE54] rounded-full border-4 border-[#D70654] shadow-lg hover:bg-white transition-transform transform hover:scale-110"
+                className="px-6 py-3 text-[#D70654] hover:text-white transition-colors duration-300 relative group"
               >
                 {link.name}
+                {/* Candy-colored underline for mobile */}
+                <span className="absolute left-0 bottom-[-4px] w-full h-[2px] bg-gradient-to-r from-pink-500 to-yellow-500 scale-x-0 group-hover:scale-x-100 transform transition-all duration-300"></span>
               </Link>
             ))}
           </nav>
@@ -286,10 +305,29 @@ export default function HomePage() {
       {/* About Section */}
       <section className="py-16 px-6 max-w-6xl mx-auto text-center">
         <h2 className="text-3xl font-bold text-gray-800">Our Mission & Vision</h2>
-        <p className="mt-4 text-gray-700">
-          At Brahmaputra Gurukul, we believe in holistic education that nurtures creativity, critical thinking, and emotional intelligence.
-          Our goal is to create a safe and inspiring learning environment where children develop a love for learning that lasts a lifetime.
+        <p className="mt-4 text-gray-800 text-lg font-medium leading-[2.5] text-center">
+          At <strong className="text-primary">Brahmaputra Gurukul</strong>, we want every child to 
+          <span className="text-primary font-semibold"> dream big, explore more, </span> 
+          and have <span className="text-yellow-500 font-semibold">tons of fun</span> while learning!  
+          Our school is like a big happy family where curiosity is encouraged, questions are welcome, 
+          and mistakes are just part of the adventure. 🤩🎈  
+
+          <br /><br />  
+
+          We believe that learning isn&apos;t just about books and exams—it&apos;s about 
+          <span className="text-blue-500 font-semibold"> discovering new things, making friends, </span> 
+          and growing into kind, smart, and confident humans. Whether it&apos;s solving puzzles, 
+          painting masterpieces, or running around in the playground, we make sure every child enjoys 
+          the journey of learning. 🎨📚🏃‍♂️  
+
+          <br /><br />  
+
+          We&apos;re not just teaching lessons; 
+          we&apos;re building a future full of <span className="text-green-500 font-semibold">bright minds </span> 
+          and <span className="text-red-500 font-semibold">happy hearts!</span> 🌟❤️😊  
         </p>
+
+
         <div className="mt-6">
           <Link href="/programs/our-programs">
             <button className="bg-[#FFD95F] text-gray-900 font-bold py-3 px-6 text-lg rounded-full border-4 border-[#D70654] shadow-lg hover:bg-[#FFEE54] transition-transform transform hover:scale-105">
@@ -304,33 +342,14 @@ export default function HomePage() {
         <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#D70654]">
           <h3 className="text-2xl font-bold text-[#D70654] border-b-2 pb-2">News & Notifications</h3>
           <ul className="mt-4 space-y-2 text-gray-700">
-            <li className="border-b pb-2">🔹 <a href="#" className="text-blue-600 hover:underline">Admission Open for 2025</a></li>
-            <li className="border-b pb-2">🔹 <a href="#" className="text-blue-600 hover:underline">Upcoming Parent-Teacher Meeting</a></li>
-            <li className="border-b pb-2">🔹 <a href="#" className="text-blue-600 hover:underline">Annual Sports Day Announced</a></li>
-            <li>🔹 <a href="#" className="text-blue-600 hover:underline">New Learning Modules Introduced</a></li>
+            <li className="border-b pb-2">🔹 <a href="https://instagram.com/brahmaputragurukul" className="text-blue-600 hover:underline">Admission Open for 2025</a></li>
+            <li className="border-b pb-2">🔹 <a href="https://instagram.com/brahmaputragurukul" className="text-blue-600 hover:underline">Upcoming Parent-Teacher Meeting</a></li>
+            <li className="border-b pb-2">🔹 <a href="https://instagram.com/brahmaputragurukul" className="text-blue-600 hover:underline">Annual Sports Day Announced</a></li>
+            <li>🔹 <a href="https://instagram.com/brahmaputragurukul" className="text-blue-600 hover:underline">New Learning Modules Introduced</a></li>
           </ul>
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-16 px-6 text-center">
-        <h2 className="text-3xl font-bold text-gray-800">Meet Our Team</h2>
-        <div className="mt-8 flex flex-wrap justify-center gap-6">
-          {[
-            { name: "Mr. Bhabesh", role: "Director", image: "/images/team4.jpeg" },
-            { name: "Mrs. Gita", role: "Principal", image: "/images/team1.jpeg" },
-            { name: "Mrs. Juri", role: "Vice Principal", image: "/images/team2.jpeg" },
-            { name: "Mrs. Sunita", role: "Teacher", image: "/images/team3.jpeg" }
-          ].map((member, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-md w-64 flex-shrink-0">
-              <Image src={member.image} alt={member.name} width={100} height={100} className="mx-auto rounded-full" />
-              <h3 className="text-xl font-semibold mt-4">{member.name}</h3>
-              <p className="text-gray-600">{member.role}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-      
       {/* Contact Us Section */}
       <section id="contact" className="py-16 px-6 text-center bg-[#FFEFC8] pb-16">
         <h2 className="text-3xl font-bold text-gray-800">Contact Us</h2>
@@ -375,7 +394,7 @@ export default function HomePage() {
 
         {/* Social Media Links */}
         <div className="mt-10 flex justify-center space-x-6">
-          <a href="https://facebook.com/brahmaputragurukul" target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center bg-[#1877F2] text-white rounded-full shadow-lg hover:scale-110 transition-transform border-2 border-white">
+          <a href="https://www.facebook.com/profile.php?id=61555911477265" target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center bg-[#1877F2] text-white rounded-full shadow-lg hover:scale-110 transition-transform border-2 border-white">
             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18 2h-3a5 5 0 00-5 5v3H6v4h4v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3V2z" /></svg>
           </a>
           <a href="mailto:brahmaputrabest@gmail.com" className="w-12 h-12 flex items-center justify-center bg-[#E4405F] text-white rounded-full shadow-lg hover:scale-110 transition-transform border-2 border-white">

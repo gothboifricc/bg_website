@@ -10,18 +10,23 @@ export default function HomePage() {
   const router = useRouter();
 
   const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    e.preventDefault(); // Prevent default anchor behavior
+    e.preventDefault();
     if (window.location.pathname === "/") {
-      // If already on home page, just scroll
       document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
     } else {
-      // Navigate to home page and scroll after load
       router.push("/#contact");
     }
   };
 
   return (
     <div className="bg-gradient-to-r from-[#5753ff] via-[#c7c5ff] to-[#5753ff] text-gray-900 min-h-screen">
+      {/* Notification Ticker */}
+      <div className="w-full bg-black text-neon-green py-2 overflow-hidden">
+        <div className="whitespace-nowrap animate-marquee text-lg font-bold uppercase">
+          🔔 School Reopening Soon! &nbsp; | &nbsp; 🎓 Admissions Open for 2025! &nbsp; | &nbsp; 🏆 New Competitions Coming Soon!
+        </div>
+      </div>
+
       {/* Header */}
       <header className="relative bg-[#FFEE54] p-4 flex justify-between items-center shadow-md border-b-4 border-[#D70654]">
         <div className="flex items-center space-x-4">
@@ -30,24 +35,25 @@ export default function HomePage() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex space-x-6 font-medium">
-          {[
-            { name: "Home", href: "/" },
-            { name: "Our Programs", href: "/programs/our-programs" },
-            { name: "Contact", href: "#contact" }
-          ].map((link, index) => (
+          {[{ name: "Home", href: "/" }, { name: "Our Programs", href: "/programs/our-programs" }, { name: "Contact", href: "#contact" }].map((link, index) => (
             <Link
               key={index}
               href={link.href}
               onClick={link.name === "Contact" ? handleContactClick : undefined}
-              className="text-[#D70654] bg-[#FFFFFF] px-4 py-2 rounded-full border-4 border-[#D70654] shadow-lg hover:bg-[#C0DFFF] transition-transform transform hover:scale-110"
+              className="relative group text-[#D70654] hover:text-white transition-colors duration-300"
             >
-              {link.name}
+              <span className="px-3 py-2 text-xl">{link.name}</span>
+              {/* Underline effect */}
+              <span className="absolute left-0 bottom-[-4px] w-full h-[2px] bg-[#D70654] scale-x-0 group-hover:scale-x-100 transform transition-all duration-300"></span>
             </Link>
           ))}
         </nav>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden bg-[#FFD95F] p-2 rounded-full border-4 border-[#D70654] shadow-lg" onClick={() => setMenuOpen(!menuOpen)}>
+        <button
+          className="md:hidden flex items-center justify-center bg-[#FFD95F] p-2 rounded-full border-4 border-[#D70654] shadow-md hover:bg-[#FFEE54] transform transition duration-300"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
           {menuOpen ? <X size={28} className="text-[#D70654]" /> : <Menu size={28} className="text-[#D70654]" />}
         </button>
 
@@ -58,11 +64,7 @@ export default function HomePage() {
           </button>
 
           <nav className="flex flex-col space-y-6 text-xl font-bold text-[#D70654]">
-            {[
-              { name: "Home", href: "/" },
-              { name: "Our Programs", href: "/programs/our-programs" },
-              { name: "Contact", href: "#contact" }
-            ].map((link, index) => (
+            {[{ name: "Home", href: "/" }, { name: "Our Programs", href: "/programs/our-programs" }, { name: "Contact", href: "#contact" }].map((link, index) => (
               <Link
                 key={index}
                 href={link.href}
@@ -72,9 +74,11 @@ export default function HomePage() {
                   }
                   setMenuOpen(false);
                 }}
-                className="px-6 py-3 bg-[#FFEE54] rounded-full border-4 border-[#D70654] shadow-lg hover:bg-white transition-transform transform hover:scale-110"
+                className="px-6 py-3 text-[#D70654] hover:text-white transition-colors duration-300 relative group"
               >
                 {link.name}
+                {/* Candy-colored underline for mobile */}
+                <span className="absolute left-0 bottom-[-4px] w-full h-[2px] bg-gradient-to-r from-pink-500 to-yellow-500 scale-x-0 group-hover:scale-x-100 transform transition-all duration-300"></span>
               </Link>
             ))}
           </nav>
@@ -84,7 +88,7 @@ export default function HomePage() {
       {/* Header Image with Parallax */}
       <section className="relative w-full h-[500px] bg-fixed bg-center bg-cover" style={{ backgroundImage: "url('/images/nursery-header.jpg')" }}>
         <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-white text-center p-6">
-          <h1 className="text-4xl md:text-5xl font-bold">Nursery Program (LKG)</h1>
+          <h1 className="text-4xl md:text-5xl font-bold">Nursery Program (Early Learners)</h1>
           <p className="text-lg md:text-xl mt-2">Building strong foundations for lifelong learning</p>
         </div>
       </section>
@@ -119,29 +123,30 @@ export default function HomePage() {
 
       {/* Teaching Process Section */}
       <section className="py-16 px-6 text-center bg-[#FFEFC8]">
-        <h2 className="text-3xl font-bold text-[#D70654]">Teaching Process</h2>
+        <h2 className="text-3xl font-bold text-[#D70654]">Learning Through Fun!</h2>
         <div className="mt-8 max-w-4xl mx-auto text-gray-900 text-left space-y-4">
           {[
-            "Initially, a lot of time is given to the child to adjust with the teachers, caregivers, and other children.",
-            "The child is first made comfortable with the new school environment.",
-            "Games like sand play and water play are introduced for motor skill development and improving attention and focus.",
-            "To help develop fine motor skills, various teaching-learning aids like hammer and peg, blocks, beads and strings, and play dough are used for structured play activities.",
-            "Puzzles and stories with pictures are introduced for cognitive development.",
-            "Rhymes are taught with music, rhythm, and action.",
-            "Outdoor games like throwing and catching a ball, walking backwards, walking on a balancing beam, running, and rope climbing are played to help develop gross motor skills.",
-            "As the child adjusts, indoor activities like identification of colors, scribbling, painting, and finger tracing activities are introduced.",
-            "Each child is given a kit comprising books, worksheets, and play material designed and curated by the Kid Veda research team."
+            "We start by making sure every little learner feels happy, safe, and excited to explore their new school! 🏫😊",
+            "Our caring teachers help kids settle in with warm smiles, fun chats, and gentle routines. 💕👩‍🏫",
+            "Sand and water play keep little hands busy while improving focus and coordination! 🏖💦",
+            "Building blocks, playdough, and bead-stringing make our fingers strong and ready for writing! 🧱✂️🖍",
+            "Storytime and puzzles help kids think, imagine, and solve problems like little geniuses! 📖🧩💡",
+            "We sing and dance to fun rhymes, learning rhythm and new words along the way! 🎶💃🎤",
+            "Outdoor play is a blast! Running, jumping, balancing, and climbing make our bodies strong and active! ⚽🏃‍♂️🎯",
+            "We start recognizing colors, shapes, and letters through exciting activities like painting and finger tracing! 🎨🔠🖌",
+            "Each child gets a special learning kit with books, worksheets, and playful learning tools! 🎁📚✨"
           ].map((text, index) => (
             <p 
               key={index} 
               className="mt-4 p-4 rounded-lg bg-white shadow-md flex items-center space-x-4 transform transition duration-300 hover:scale-105 hover:bg-[#FFD95F] hover:shadow-lg"
             >
-              <span className="text-2xl">🐰</span>
+              <span className="text-2xl">🐣</span>
               <span>{text}</span>
             </p>
           ))}
         </div>
       </section>
+
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white text-center p-6 mt-16">
