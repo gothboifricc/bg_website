@@ -102,10 +102,10 @@ export default function HomePage() {
           </p>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { name: "Playgroup", age: "1.5 - 2.5 years", image: "/images/playgroup.jpg", link: "/programs/playgroup" },
-              { name: "Nursery", age: "2.5 - 3.5 years", image: "/images/nursery.jpg", link: "/programs/nursery" },
-              { name: "LKG", age: "3.5 - 4.5 years", image: "/images/lkg.jpg", link: "/programs/lkg" },
-              { name: "UKG", age: "4.5 - 5.5 years", image: "/images/ukg.jpg", link: "/programs/ukg" }
+              { name: "Playgroup", age: "2 - 3 years", image: "/images/playgroup.jpg", link: "/programs/playgroup" },
+              { name: "Nursery", age: "3 - 4 years", image: "/images/nursery.jpg", link: "/programs/nursery" },
+              { name: "LKG", age: "4 - 5 years", image: "/images/lkg.jpg", link: "/programs/lkg" },
+              { name: "UKG", age: "5+ years", image: "/images/ukg.jpg", link: "/programs/ukg" }
             ].map((program, index) => (
               <Link key={index} href={program.link} className="group block overflow-hidden rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
                 <div className="relative w-full h-64"> 
