@@ -97,7 +97,7 @@ export default function HomePage() {
       <section className="py-16 px-6 text-center max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-gray-900">About Nursery</h2>
         <p className="text-gray-800 mt-4">
-          Our Nursery program is designed for children aged <strong>2.5 - 3.5 years</strong>, focusing on structured learning through
+          Our Nursery program is designed for children aged <strong>3 - 4 years</strong>, focusing on structured learning through
           <strong> storytelling, group activities, and creative play</strong>.
         </p>
       </section>
