@@ -97,7 +97,7 @@ export default function HomePage() {
       <section className="py-16 px-6 text-center max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-gray-900">About UKG</h2>
         <p className="text-gray-800 mt-4">
-          Our <strong>Upper Kindergarten (UKG)</strong> program is designed for children aged <strong>4.5 - 5.5 years</strong>, helping them transition smoothly to primary school by strengthening their <strong>academic and social skills</strong>.
+          Our <strong>Upper Kindergarten (UKG)</strong> program is designed for children aged <strong>5+ years</strong>, helping them transition smoothly to primary school by strengthening their <strong>academic and social skills</strong>.
         </p>
       </section>
 
