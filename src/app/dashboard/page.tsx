@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { auth } from "../lib/firebaseConfig";
 import { signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
-import { getFirestore } from "firebase/firestore";
+// import { getFirestore } from "firebase/firestore";
 import { User } from "firebase/auth";
 
 export default function Dashboard() {
@@ -13,7 +13,7 @@ export default function Dashboard() {
   // const [attendance, setAttendance] = useState<number | null>(null);
   // const [messages, setMessages] = useState<string | null>(null);
   // const [homework, setHomework] = useState<string | null>(null);
-  const [sheetUrl, setSheetUrl] = useState<string | null>(null);
+  const [sheetUrl] = useState<string | null>(null);
   const [showReports, setShowReports] = useState(false);
   const router = useRouter();
   // const db = getFirestore();
