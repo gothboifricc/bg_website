@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { auth } from "../lib/firebaseConfig";
 import { signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
-// import { getFirestore } from "firebase/firestore";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { User } from "firebase/auth";
 
 export default function Dashboard() {
@@ -16,7 +16,7 @@ export default function Dashboard() {
   const [sheetUrl] = useState<string | null>(null);
   const [showReports, setShowReports] = useState(false);
   const router = useRouter();
-  // const db = getFirestore();
+  const db = getFirestore();
   
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -26,10 +26,22 @@ export default function Dashboard() {
       } else {
         console.log("User is logged in:", user.uid);
         setUser(user);
+        await fetchStudentSheet(user.uid);
       }
     });
     return () => unsubscribe();
   }, [router]);
+
+  const fetchStudentSheet = async (userId: string) => {
+    const docRef = doc(db, "students", userId);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      setSheetUrl(docSnap.data().sheetUrl);
+    } else {
+      setSheetUrl(null);
+    }
+  };
 
   const handleLogout = async () => {
     await signOut(auth);
