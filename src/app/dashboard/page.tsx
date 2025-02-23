@@ -17,13 +17,6 @@ export default function Dashboard() {
   const [showReports, setShowReports] = useState(false);
   const router = useRouter();
   // const db = getFirestore();
-
-  useEffect(() => {
-    console.log("Attendance:", attendance);
-    console.log("Messages:", messages);
-    console.log("Homework:", homework);
-    console.log("Sheet URL:", sheetUrl);
-  }, [attendance, messages, homework, sheetUrl]);
   
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
