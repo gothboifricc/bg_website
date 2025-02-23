@@ -6,9 +6,10 @@ import { auth } from "../lib/firebaseConfig";
 import { signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { getFirestore } from "firebase/firestore";
+import { User } from "firebase/auth";
 
 export default function Dashboard() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [attendance, setAttendance] = useState<number | null>(null);
   const [messages, setMessages] = useState<string | null>(null);
   const [homework, setHomework] = useState<string | null>(null);
@@ -17,6 +18,13 @@ export default function Dashboard() {
   const router = useRouter();
   const db = getFirestore();
 
+  useEffect(() => {
+    console.log("Attendance:", attendance);
+    console.log("Messages:", messages);
+    console.log("Homework:", homework);
+    console.log("Sheet URL:", sheetUrl);
+  }, [attendance, messages, homework, sheetUrl]);
+  
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (!user) {
