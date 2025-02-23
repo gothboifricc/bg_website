@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../lib/firebaseConfig";  // Ensure this path is correct
+import { auth } from "../lib/firebaseConfig";  
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
@@ -10,15 +11,36 @@ export default function SignupPage() {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  const handleSignup = async (e: React.FormEvent) => {
+  const handleSignup = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      router.push("/dashboard"); // Redirect to dashboard after successful signup
-    } catch (error) {
-      setError("Failed to create an account. Try again.");
+      router.push("/dashboard"); 
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        if ("code" in err) {
+          const errorCode = (err as any).code;
+          switch (errorCode) {
+            case "auth/email-already-in-use":
+              setError("This email is already registered.");
+              break;
+            case "auth/invalid-email":
+              setError("Invalid email format.");
+              break;
+            case "auth/weak-password":
+              setError("Password should be at least 6 characters.");
+              break;
+            default:
+              setError("Failed to create an account. Try again.");
+          }
+        } else {
+          setError(err.message);
+        }
+      } else {
+        setError("An unexpected error occurred.");
+      }
     }
-  };
+  }, [email, password, router]);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
@@ -48,7 +70,7 @@ export default function SignupPage() {
         </form>
         <p className="mt-4">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-500 hover:underline">Login</a>
+          <Link href="/login" className="text-blue-500 hover:underline">Login</Link>
         </p>
       </div>
     </div>
