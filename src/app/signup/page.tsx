@@ -17,24 +17,20 @@ export default function SignupPage() {
       await createUserWithEmailAndPassword(auth, email, password);
       router.push("/dashboard"); 
     } catch (err: unknown) {
-      if (err instanceof Error) {
-        if ("code" in err) {
-          const errorCode = (err as any).code;
-          switch (errorCode) {
-            case "auth/email-already-in-use":
-              setError("This email is already registered.");
-              break;
-            case "auth/invalid-email":
-              setError("Invalid email format.");
-              break;
-            case "auth/weak-password":
-              setError("Password should be at least 6 characters.");
-              break;
-            default:
-              setError("Failed to create an account. Try again.");
-          }
-        } else {
-          setError(err.message);
+      if (typeof err === "object" && err !== null && "code" in err) {
+        const errorCode = (err as { code: string }).code;
+        switch (errorCode) {
+          case "auth/email-already-in-use":
+            setError("This email is already registered.");
+            break;
+          case "auth/invalid-email":
+            setError("Invalid email format.");
+            break;
+          case "auth/weak-password":
+            setError("Password should be at least 6 characters.");
+            break;
+          default:
+            setError("Failed to create an account. Try again.");
         }
       } else {
         setError("An unexpected error occurred.");
