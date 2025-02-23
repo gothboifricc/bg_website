@@ -16,8 +16,9 @@ export default function LoginPage() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       router.push("/dashboard"); // Redirect to the dashboard
-    } catch (error) {
+    } catch (err) {
       setError("Invalid email or password.");
+      console.error(err); // Ensures `error` is used
     }
   };
 
@@ -50,7 +51,7 @@ export default function LoginPage() {
 
         {/* Sign Up Link */}
         <p className="mt-4 text-center">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link href="/signup" className="text-blue-500 hover:underline">
             Sign Up
           </Link>
