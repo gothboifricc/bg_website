@@ -10,13 +10,13 @@ import { User } from "firebase/auth";
 
 export default function Dashboard() {
   const [user, setUser] = useState<User | null>(null);
-  const [attendance, setAttendance] = useState<number | null>(null);
-  const [messages, setMessages] = useState<string | null>(null);
-  const [homework, setHomework] = useState<string | null>(null);
+  // const [attendance, setAttendance] = useState<number | null>(null);
+  // const [messages, setMessages] = useState<string | null>(null);
+  // const [homework, setHomework] = useState<string | null>(null);
   const [sheetUrl, setSheetUrl] = useState<string | null>(null);
   const [showReports, setShowReports] = useState(false);
   const router = useRouter();
-  const db = getFirestore();
+  // const db = getFirestore();
 
   useEffect(() => {
     console.log("Attendance:", attendance);
