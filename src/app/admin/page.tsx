@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { db } from "../lib/firebaseConfig";
-import { collection, getDocs, addDoc, deleteDoc, doc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 export default function AdminPage() {
   const [tickerMessages, setTickerMessages] = useState<{ id: string; text: string }[]>([]);
