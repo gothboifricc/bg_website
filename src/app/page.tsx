@@ -307,7 +307,7 @@ export default function HomePage() {
 
         {/* Mobile Nav (Sliding Drawer) */}
         <div className={`fixed top-0 left-0 w-full h-full bg-[#FFD95F] transition-transform transform ${menuOpen ? "translate-x-0" : "-translate-x-full"} duration-300 z-50 flex flex-col items-center pt-20 shadow-lg`}>
-          <button onClick={() => setMenuOpen(false)} className="absolute top-4 right-6 bg-[#D70654] text-white p-2 rounded-full">
+          <button onClick={() => setMenuOpen(false)} className="absolute top-4 right-6 bg-[#D70654] text-white p-2 rounded-full" aria-label="Close Menu">
             <X size={28} />
           </button>
 
@@ -407,17 +407,24 @@ export default function HomePage() {
         >
           <div className="mb-4">
             <label className="block text-gray-700 font-semibold">Name</label>
-            <input type="text" name="name" required className="w-full p-2 border-2 border-gray-300 rounded-lg" />
+            <input type="text" name="name" required className="w-full p-2 border-2 border-gray-300 rounded-lg" aria-label="User Name"/>
           </div>
 
           <div className="mb-4">
             <label className="block text-gray-700 font-semibold">Email</label>
-            <input type="email" name="email" required className="w-full p-2 border-2 border-gray-300 rounded-lg" />
+            <input type="email" name="email" required className="w-full p-2 border-2 border-gray-300 rounded-lg" aria-label="User Email" />
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-700 font-semibold">Message</label>
-            <textarea name="message" required className="w-full p-2 border-2 border-gray-300 rounded-lg h-32"></textarea>
+            <label htmlFor="message" className="block text-gray-700 font-semibold">
+              Message
+            </label>
+            <textarea 
+              id="message" 
+              name="message" 
+              required 
+              className="w-full p-2 border-2 border-gray-300 rounded-lg h-32"
+            ></textarea>
           </div>
 
           <button type="submit" className="bg-[#FFD95F] text-gray-900 font-bold py-3 px-6 text-lg rounded-full border-4 border-[#D70654] shadow-lg hover:bg-[#FFEE54] transition-transform transform hover:scale-105">
